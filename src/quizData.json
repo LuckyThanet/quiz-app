@@ -274,7 +274,7 @@
     },
     {
         "id": 22,
-        "question": "What is not true about Banker\u00e2\u20ac\u2122s algorithm?",
+        "question": "What is not true about Banker's algorithm?",
         "options": [
             "Process must declare maximum number of resources",
             "Need is Max minus allocation",
