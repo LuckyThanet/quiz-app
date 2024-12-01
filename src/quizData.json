@@ -1,0 +1,405 @@
+[
+    {
+        "id": 1,
+        "question": "What is not true about concurrency?",
+        "options": [
+            "Operating system can run many processes at the same time on multi-core processor",
+            "Operating system can run many threads at the same time on multi-core processor",
+            "When a process has several threads, race condition might occur",
+            "Only one process can be executed on a core of a processor at one time",
+            "Memory of a process cannot be shared with other processes"
+        ],
+        "answer": "Memory of a process cannot be shared with other processes",
+        "explanation": "Processes can share memory if explicitly allowed, like using shared memory or inter-process communication (IPC)."
+    },
+    {
+        "id": 2,
+        "question": "What is not true about thread?",
+        "options": [
+            "Each thread has its own PC",
+            "All threads share resource within a process",
+            "OS also needs to context-switch threads",
+            "Thread shares data but has separate stack",
+            "Each thread has separate address spaces"
+        ],
+        "answer": "Each thread has separate address spaces",
+        "explanation": "Threads in the same process share the same address space, which includes code, data, and resources."
+    },
+    {
+        "id": 3,
+        "question": "What is not true about race condition?",
+        "options": [
+            "To prevent race condition, mutex must be guaranteed when critical region is entered",
+            "Mutex allows one of several threads to enter a critical region",
+            "Race condition might occur when threads share resources",
+            "Race condition will not occur if one thread is running at a time",
+            "Race condition makes process runs faster"
+        ],
+        "answer": "Race condition makes process runs faster",
+        "explanation": "A race condition doesn\u2019t improve speed; it causes unpredictable behavior when multiple processes access shared resources."
+    },
+    {
+        "id": 4,
+        "question": "Which statement cannot be a critical region?",
+        "options": [
+            "for(int i=10;i>0;i--);",
+            "count = count + 1",
+            "sum +=i",
+            "all of them can be a critical region",
+            "i++"
+        ],
+        "answer": "i++",
+        "explanation": "Even simple operations like 'i++' can be critical if multiple threads access the variable without synchronization."
+    },
+    {
+        "id": 5,
+        "question": "Which system call cause the main thread to wait for child thread to terminate?",
+        "options": [
+            "pthread_cond_wait",
+            "pthread_create",
+            "pthread_cond_init",
+            "pthread_mutex_init",
+            "pthread_join"
+        ],
+        "answer": "pthread_join",
+        "explanation": "'pthread_join' blocks the caller until the specified thread finishes."
+    },
+    {
+        "id": 6,
+        "question": "What is not true about lock?",
+        "options": [
+            "compare_and_swap is a hardware lock",
+            "Spin lock wastes CPU cycles waiting",
+            "Software test and set is not correct",
+            "We can use interrupt to create lock",
+            "We can create pure software lock"
+        ],
+        "answer": "We can create pure software lock",
+        "explanation": "Hardware assistance (like atomic instructions) is needed to create reliable locks."
+    },
+    {
+        "id": 7,
+        "question": "What is true about lock?",
+        "options": [
+            "Fetch and add does not know the order of lock request",
+            "Compare-and-swap is fairer than test-and-set",
+            "Process can only wait for lock by spinning",
+            "Load-linked allows caller to load a ticket",
+            "Starvation might happen when uses only test-and-set"
+        ],
+        "answer": "Starvation might happen when uses only test-and-set",
+        "explanation": "Starvation occurs if one thread gets stuck waiting because others keep accessing the lock."
+    },
+    {
+        "id": 8,
+        "question": "What is the software not a support to solve wasting cycles with lock?",
+        "options": [
+            "Sleep instead of spin",
+            "Yield system call",
+            "Park when lock",
+            "Using waiting queue for lock request",
+            "All are software supports to solve wasting cycles"
+        ],
+        "answer": "All are software supports to solve wasting cycles",
+        "explanation": "Techniques like spinlocks or conditional variables help minimize CPU waste."
+    },
+    {
+        "id": 9,
+        "question": "What is not true about bounded buffer problem?",
+        "options": [
+            "The program does not work with one conditional variable",
+            "Producer is waiting on empty condition",
+            "Consumer is waiting on full condition",
+            "You need all mutex, full, and empty",
+            "Mutex is used to count available items"
+        ],
+        "answer": "Mutex is used to count available items",
+        "explanation": "Mutexes manage access to shared resources, but counters like semaphores count available items."
+    },
+    {
+        "id": 10,
+        "question": "What does a producer call when it produces something?",
+        "options": [
+            "mutex_lock(&mutex)",
+            "mutex_unlock(&mutex)",
+            "cond_signal(&empty)",
+            "cond_wait(&fill, &mutex)",
+            "cond_signal(&fill)"
+        ],
+        "answer": "cond_signal(&fill)",
+        "explanation": "The producer signals the consumer that the buffer has a new item (fills the buffer)."
+    },
+    {
+        "id": 11,
+        "question": "What does a consumer call when it consumes something?",
+        "options": [
+            "mutex_lock(&mutex)",
+            "mutex_unlock(&mutex)",
+            "cond_signal(&fill)",
+            "cond_wait(&fill, &mutex)",
+            "cond_signal(&empty)"
+        ],
+        "answer": "cond_signal(&empty)",
+        "explanation": "The consumer signals the producer that space is available in the buffer (empties the buffer)."
+    },
+    {
+        "id": 12,
+        "question": "What is true about semaphore?",
+        "options": [
+            "There are binary and continuous semaphore",
+            "When sem_post is called, value is decreased by 1",
+            "When sem_wait is called, value is increased by 1",
+            "Semaphore value can only be 0 and 1",
+            "Semaphore can be used to create mutex"
+        ],
+        "answer": "Semaphore can be used to create mutex",
+        "explanation": "A binary semaphore (values 0 or 1) can act as a mutex."
+    },
+    {
+        "id": 13,
+        "question": "Which statement is not true?",
+        "options": [
+            "A process has to request for a resource before use",
+            "A process needs to hold a resource while using it",
+            "When a process finish the task, resources can be released",
+            "A process cannot hold processor",
+            "Each resource type only has one instance"
+        ],
+        "answer": "Each resource type only has one instance",
+        "explanation": "Some resource types can have multiple instances, like printers or database connections."
+    },
+    {
+        "id": 14,
+        "question": "Which problem does cause by resource allocation?",
+        "options": [
+            "Race condition",
+            "Trashing",
+            "Internal fragmentation",
+            "Zombie",
+            "Deadlock"
+        ],
+        "answer": "Deadlock",
+        "explanation": "Deadlocks occur when processes compete for resources in a way that none can proceed."
+    },
+    {
+        "id": 15,
+        "question": "What is true about deadlock?",
+        "options": [
+            "Deadlock will occur when many processes are waiting for CPU",
+            "Deadlock will occur when virtual memory is running low",
+            "Deadlock will occur if process need to hold resources and wait for other resources",
+            "Deadlock will occur even there is only one resource type",
+            "A deadlock needs more than one process to occur"
+        ],
+        "answer": "A deadlock needs more than one process to occur",
+        "explanation": "Deadlocks involve at least two processes holding resources and waiting on each other."
+    },
+    {
+        "id": 16,
+        "question": "What is not the four conditions of deadlock?",
+        "options": [
+            "Mutual exclusion",
+            "Non-preemption",
+            "Hold and wait",
+            "Circular wait",
+            "Virtualization"
+        ],
+        "answer": "Virtualization",
+        "explanation": "The four conditions are mutual exclusion, hold-and-wait, no preemption, and circular wait."
+    },
+    {
+        "id": 17,
+        "question": "When does a deadlock might occur?",
+        "options": [
+            "Banker algorithm is in a safe state",
+            "There is no resource in holding",
+            "Resource can be preempted",
+            "Resource allocation graph has no circle",
+            "Resource allocation graph has circle"
+        ],
+        "answer": "Resource allocation graph has circle",
+        "explanation": "A cycle in the resource allocation graph means processes are stuck waiting for each other."
+    },
+    {
+        "id": 18,
+        "question": "A deadlock will never occur with which deadlock management?",
+        "options": [
+            "Deadlock will never occur with prevention",
+            "Deadlock will never occur with avoidance",
+            "Deadlock will never occur with detection",
+            "Deadlock will occur in all managements",
+            "Both prevention and avoidance"
+        ],
+        "answer": "Both prevention and avoidance",
+        "explanation": "Prevention and avoidance strategies ensure deadlocks don\u2019t happen."
+    },
+    {
+        "id": 19,
+        "question": "Which deadlock management needs recovery?",
+        "options": [
+            "Prevention",
+            "Avoidance",
+            "Both prevention and avoidance",
+            "All managements need recovery scheme",
+            "Detection"
+        ],
+        "answer": "Detection",
+        "explanation": "Deadlock detection identifies a deadlock after it occurs and then takes action to recover."
+    },
+    {
+        "id": 20,
+        "question": "Which problem does requesting resource in increasing order would solve?",
+        "options": [
+            "No preemption",
+            "Hold and wait",
+            "Mutual exclusion",
+            "Starvation",
+            "Circular wait"
+        ],
+        "answer": "Circular wait",
+        "explanation": "Resource ordering prevents circular dependencies, a key cause of deadlocks."
+    },
+    {
+        "id": 21,
+        "question": "Which method can solve no preemption?",
+        "options": [
+            "test_and_set",
+            "try_lock and try_wait",
+            "fetch_and_add",
+            "request resource in increasing order",
+            "yield"
+        ],
+        "answer": "yield",
+        "explanation": "'yield' allows a process to voluntarily give up the CPU to avoid resource conflicts."
+    },
+    {
+        "id": 22,
+        "question": "What is not true about Banker\u00e2\u20ac\u2122s algorithm?",
+        "options": [
+            "Process must declare maximum number of resources",
+            "Need is Max minus allocation",
+            "Deadlock will occur in unsafe state",
+            "Request can be granted if resource left is more than needed resource",
+            "Deadlock might occur in safe state"
+        ],
+        "answer": "Deadlock might occur in safe state",
+        "explanation": "A safe state guarantees that deadlock will not occur."
+    },
+    {
+        "id": 23,
+        "question": "What could deadlock recovery do?",
+        "options": [
+            "Deny request",
+            "Preempt resource from process",
+            "Put process on wait queue",
+            "Put process on ready queue",
+            "Terminate processes"
+        ],
+        "answer": "Terminate processes",
+        "explanation": "Terminating processes can free up resources to resolve a deadlock."
+    },
+    {
+        "id": 24,
+        "question": "Which statement is not true?",
+        "options": [
+            "Wait-for graph is equivalent to resource allocation graph",
+            "Resource allocation graph is used in deadlock avoidance",
+            "There is no resource in wait-for graph",
+            "Deadlock occurs when there is a loop in wait-for graph",
+            "Resource allocation graph is used in deadlock detection"
+        ],
+        "answer": "Resource allocation graph is used in deadlock detection",
+        "explanation": "Resource allocation graph is used for deadlock prevention and avoidance, not direct detection."
+    },
+    {
+        "id": 25,
+        "question": "Which method is when the device-registers are mapped into the memory space of the system?",
+        "options": [
+            "System call",
+            "Interrupt",
+            "Direct memory access",
+            "Pooling",
+            "Memory-Mapped I/O"
+        ],
+        "answer": "Memory-Mapped I/O",
+        "explanation": "Device registers are accessed like normal memory locations."
+    },
+    {
+        "id": 26,
+        "question": "Which statement is not true?",
+        "options": [
+            "Interrupt can be hardware and software",
+            "Interrupt frees up processor to do something else",
+            "DMA moves data from device directly into memory",
+            "Interrupt vector table stores locations of service routines",
+            "Pooling is the most efficient method to access IO"
+        ],
+        "answer": "Pooling is the most efficient method to access IO",
+        "explanation": "Polling wastes CPU cycles by repeatedly checking for readiness."
+    },
+    {
+        "id": 27,
+        "question": "Which layer knows how to read and write specific block of device?",
+        "options": [
+            "Application layer",
+            "File system",
+            "Generic block layer",
+            "All layers can directly read and write blocks on device",
+            "Device driver"
+        ],
+        "answer": "Device driver",
+        "explanation": "Device drivers handle hardware-specific operations."
+    },
+    {
+        "id": 28,
+        "question": "Which Disk Scheduling Algorithm might cause starvation?",
+        "options": [
+            "FCFS",
+            "SCAN",
+            "LOOK",
+            "No starvation in disk scheduling",
+            "SSTF"
+        ],
+        "answer": "SSTF",
+        "explanation": "SSTF (Shortest Seek Time First) can favor certain requests and ignore others."
+    },
+    {
+        "id": 29,
+        "question": "Which Disk Scheduling Algorithm does sweep from the outer to inner track and then back to the outer, again?",
+        "options": [
+            "FCFS",
+            "SSTF",
+            "SPTF",
+            "LOOK",
+            "SCAN"
+        ],
+        "answer": "SCAN",
+        "explanation": "SCAN (elevator algorithm) moves back and forth across the disk."
+    },
+    {
+        "id": 30,
+        "question": "What is not true about RAID?",
+        "options": [
+            "RAID 0 is stripping with no mirror",
+            "RAID 1 is mirror with no stripping",
+            "RAID 2 has error correcting code",
+            "RAID 3 is Bit-striping and dedicated parity disk",
+            "RAID 4 is Block-striping and block-mirroring"
+        ],
+        "answer": "RAID 4 is Block-striping and block-mirroring",
+        "explanation": "RAID 4 uses block-striping with parity, not mirroring."
+    },
+    {
+        "id": 31,
+        "question": "Which file allocation method is FAT?",
+        "options": [
+            "Contiguous allocation",
+            "Indexed allocation",
+            "Multi-level indexed allocation",
+            "Combined scheme",
+            "Linked allocation"
+        ],
+        "answer": "Linked allocation",
+        "explanation": "FAT (File Allocation Table) uses pointers to link blocks like a linked list."
+    }
+]
